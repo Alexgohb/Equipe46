@@ -26,7 +26,7 @@ for i in range(len(coeffs) - 1):
 
 y = lambda t:np.exp(t)*np.sin(t)
 plt.plot(np.linspace(np.pi/4, 3, 100), y(np.linspace(np.pi/4, 3, 100)), label='Solution exacte', color='black')
-plt.title("Splines pour l'EDO implicite")
+plt.title("Figure 1: Splines cubiques pour l'EDO implicite")
 plt.xlabel('t')
 plt.ylabel('y')
 plt.legend()
