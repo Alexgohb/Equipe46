@@ -35,12 +35,24 @@ plt.show()
 #Question d)
 
 def calcul_max(N):
+    coeff = splines_edo_implicite(alpha=alpha_c, beta=beta_c, f=f_c, t0=(np.pi/4), tf=3, N=N)
     t = np.linspace(np.pi/4, 3, N+1)
     y_exact = np.zeros(N+1)
+    y_approx = np.zeros(N+1)
     for i, j in enumerate(t):
-        y_exact[i] = y(t)
-    y_approx = 
+        y_exact[i] = y(j)
+        y_approx[i] = coeff[i][0]*j**3 + coeff[i][1]*j**2 + coeff[i][2]*j + coeff[i][3]
     difference = []
-    for i in range(N+2):
+    for i in range(N+1):
         difference.append(abs(y_exact[i] - y_approx[i]))
     return max(difference)
+
+Erreur = np.array([calcul_max(2**6),calcul_max(2**7),calcul_max(2**8),calcul_max(2**9),calcul_max(2**10)])
+h = np.array([(3 - np.pi/4) / 2**6, (3 - np.pi/4) / 2**7, (3 - np.pi/4) / 2**8, (3 - np.pi/4) / 2**9, (3 - np.pi/4) / 2**10])
+
+plt.loglog(h, Erreur, 'o-', color='red')
+plt.xlabel('h')
+plt.ylabel('E(h)')
+plt.title('Figure 2: Erreur en fonction de h')
+plt.grid(True)
+plt.show()
