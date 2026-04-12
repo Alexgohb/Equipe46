@@ -31,3 +31,16 @@ plt.xlabel('t')
 plt.ylabel('y')
 plt.legend()
 plt.show()
+
+#Question d)
+
+def calcul_max(N):
+    t = np.linspace(np.pi/4, 3, N+1)
+    y_exact = np.zeros(N+1)
+    for i, j in enumerate(t):
+        y_exact[i] = y(t)
+    y_approx = 
+    difference = []
+    for i in range(N+2):
+        difference.append(abs(y_exact[i] - y_approx[i]))
+    return max(difference)
