@@ -41,7 +41,11 @@ def calcul_max(N):
     y_approx = np.zeros(N+1)
     for i, j in enumerate(t):
         y_exact[i] = y(j)
-        y_approx[i] = coeff[i][0]*j**3 + coeff[i][1]*j**2 + coeff[i][2]*j + coeff[i][3]
+        if i == 0:
+            C = coeff[0]
+        else:
+            C = coeff[i-1]
+        y_approx[i] = C[0]*j**3 + C[1]*j**2 + C[2]*j + C[3]
     difference = []
     for i in range(N+1):
         difference.append(abs(y_exact[i] - y_approx[i]))
