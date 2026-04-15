@@ -60,3 +60,26 @@ plt.ylabel('E(h)')
 plt.title('Figure 2: Erreur en fonction de h')
 plt.grid(True)
 plt.show()
+
+#Question i)
+
+#On défini la fonction f(t, Y) (Y est un vecteur incluant y1 et y2)
+
+f = lambda t, Y:np.array([Y[1], (2*np.exp(-t)/np.sin(t))*Y[0]*Y[1] - 2*np.exp(t)*np.sin(t)])
+y0 = np.array([(2**0.5/2)*np.exp(np.pi/4), 2**0.5*np.exp(np.pi/4)])
+t, yt = rk4(f, np.pi/4, 3, y0, (3 - np.pi/4)/16)
+plt.plot(t, yt[0], label='rk4', color='green')
+plt.plot(np.linspace(np.pi/4, 3, 100), y(np.linspace(np.pi/4, 3, 100)), label='Solution exacte', color='black')
+for i in range(len(coeffs) - 1):
+    axe_x = np.linspace(t[i], t[i+1], 100)
+    C = coeffs[i]
+    axe_y = C[0]*axe_x**3 + C[1]*axe_x**2 + C[2]*axe_x + C[3]
+    if i == 0:
+        plt.plot(axe_x, axe_y, color='red', label='Solution approximation')
+    else:
+        plt.plot(axe_x, axe_y, color='red')
+plt.title("Figure 3: Comparaison des deux méthodes d'approximation et la solution exacte")
+plt.xlabel('t')
+plt.ylabel('y')
+plt.legend()
+plt.show()
