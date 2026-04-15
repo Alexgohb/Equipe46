@@ -68,7 +68,7 @@ plt.show()
 f = lambda t, Y:np.array([Y[1], (2*np.exp(-t)/np.sin(t))*Y[0]*Y[1] - 2*np.exp(t)*np.sin(t)])
 y0 = np.array([(2**0.5/2)*np.exp(np.pi/4), 2**0.5*np.exp(np.pi/4)])
 t, yt = rk4(f, np.pi/4, 3, y0, (3 - np.pi/4)/16)
-plt.plot(t, yt[0], label='rk4', color='green')
+plt.plot(t, yt[0], label='rk4', color='orange')
 plt.plot(np.linspace(np.pi/4, 3, 100), y(np.linspace(np.pi/4, 3, 100)), label='Solution exacte', color='black')
 for i in range(len(coeffs) - 1):
     axe_x = np.linspace(t[i], t[i+1], 100)
